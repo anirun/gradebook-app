@@ -11,6 +11,16 @@ class Api::UsersController < ApplicationController
     render json: @current_user
   end
 
+  def teachers
+    teachers = User.teachers
+    render json: teachers, status: 200
+  end
+
+  def students
+    students = User.students
+    render json: students, status: 200
+  end
+
   private
 
   def user_params
