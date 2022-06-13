@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get "/me", to: "users#show"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+
+    get "/teachers", to: "users#teachers"
+    get "/students", to: "users#students"
   end
   # all other routes will be load our React application
   # this route definition matches:
