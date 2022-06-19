@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_19_170916) do
+ActiveRecord::Schema.define(version: 2022_06_19_180205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_06_19_170916) do
     t.text "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "total_points"
-    t.float "graded_points"
+    t.integer "total_points", default: 100
+    t.float "graded_points", default: 0.0
     t.float "grade"
     t.index ["student_id"], name: "index_assignments_on_student_id"
     t.index ["teacher_id"], name: "index_assignments_on_teacher_id"
