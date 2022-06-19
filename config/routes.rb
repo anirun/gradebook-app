@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :assignments
   resources :subjects
   namespace :api do
     resources :recipes, only: [:index, :create]
