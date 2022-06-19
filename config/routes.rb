@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :assignments
-  resources :subjects
+  
   namespace :api do
     resources :recipes, only: [:index, :create]
+    
+    resources :assignments
+    resources :subjects
+
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
     post "/login", to: "sessions#create"
