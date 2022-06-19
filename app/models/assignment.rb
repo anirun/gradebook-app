@@ -11,7 +11,7 @@ class Assignment < ApplicationRecord
   private
 
   def calculate_grade
-    graded_assignment = (self.graded_points / self.total_points)
+    graded_assignment = (self.graded_points / self.total_points) * 100
     self.grade = graded_assignment
   end
 end

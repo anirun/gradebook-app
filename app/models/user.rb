@@ -3,8 +3,8 @@ class User < ApplicationRecord
   
   has_many :recipes
   
-  # has_many :created_assignments, class_name: "Assignment", foreign_key: :teacher_id
-  # has_many :graded_assignments, class_name: "Assignment", foreign_key: :student_id
+  has_many :created_assignments, class_name: "Assignment", foreign_key: :teacher_id, dependent: :destroy
+  has_many :graded_assignments, class_name: "Assignment", foreign_key: :student_id, dependent: :destroy
 
   # has_many :teacher_classes, class_name: "Class", foreign_key: :teacher_id
   # has_many :student_classes, class_name: "Class", foreign_key: :student_id
