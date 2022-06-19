@@ -1,13 +1,12 @@
 class Assignment < ApplicationRecord
-  belongs_to :student
-  belongs_to :teacher
+  belongs_to :student, class_name: "User"
+  belongs_to :teacher, class_name: "User"
 
   before_save :calculate_grade
 
   validates :name, presence: true
-  validates :total_points, :graded_points, :grade, numericality: { greater_than_or_equal_to: 0 }
+  validates :total_points, :graded_points, numericality: { greater_than_or_equal_to: 0 }
   validates :comments, length: { maximum: 150 }
-
 
   private
 
