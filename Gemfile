@@ -15,6 +15,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Media file upload
 gem 'activestorage'
 
+# reset-pk-sequence when reseeding
+gem 'activerecord-reset-pk-sequence'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
