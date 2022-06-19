@@ -15,9 +15,12 @@ function NavBar({ user, setUser }) {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">Reciplease</Link>
+        <Link to="/">GradeBook✔️</Link>
       </Logo>
       <Nav>
+        <Button as={Link} to="/profile">
+          Profile
+        </Button>
         <Button as={Link} to="/new">
           New Recipe
         </Button>
@@ -37,9 +40,9 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
+  font-family: "Codystar";
   font-size: 3rem;
-  color: deeppink;
+  color: darkblue;
   margin: 0;
   line-height: 1;
 
