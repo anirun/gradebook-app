@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import RecipeList from "../pages/RecipeList";
 import NewRecipe from "../pages/NewRecipe";
+import UserCard from "./UserCard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,6 +25,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
+          <Route path="/profile">
+            <UserCard user={user} />
+          </Route>
           <Route path="/new">
             <NewRecipe user={user} />
           </Route>
