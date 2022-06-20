@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Error, FormField, Input, Label } from "../styles";
 
-function NewAssignment({ user, lecture }) {
+function NewAssignment({ user }) {
   const [name, setName] = useState("homework");
   const [totalPoints, setTotalPoints] = useState("100");
   const [lectureId, setLectureId] = useState("Lecture?");
@@ -51,10 +51,10 @@ function NewAssignment({ user, lecture }) {
   return (
     <Wrapper>
       <WrapperChild>
-        <h2>Create New Assignment</h2>
+        <Label>Create New Assignment</Label>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <Label htmlFor="name">name</Label>
+            <Label htmlFor="name">Name</Label>
             <Input
               type="text"
               id="name"
@@ -63,7 +63,7 @@ function NewAssignment({ user, lecture }) {
             />
           </FormField>
           <FormField>
-            <Label htmlFor="totalPoints">Total Points</Label>
+            <Label htmlFor="totalPoints">Points Possible</Label>
             <Input
               type="number"
               id="totalPoints"
@@ -95,12 +95,15 @@ function NewAssignment({ user, lecture }) {
         </form>
       </WrapperChild>
       <WrapperChild>
-        <h1>{name}</h1>
-        <p>
-          <em>Total Points: {totalPoints} minutes</em>
-          &nbsp;·&nbsp;
+        <div class="block">
+          <Label>{name}</Label>
+        </div>
+        <div class="block">
+          <em>Points Possible: {totalPoints}</em>
+        </div>
+        <div class="block">
           <cite>Teacher: {user.name}</cite>
-        </p>
+        </div>
       </WrapperChild>
     </Wrapper>
   );
