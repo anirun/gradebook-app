@@ -23,22 +23,29 @@ function NavBar({ user, setUser }) {
   }
 console.log(user.role)
   return (
-    <Wrapper>
-      <Logo>
-        <Link to="/">GradeBook✔️</Link>
-      </Logo>
-      <Nav>
-        <button class="button" onClick={handleProfile}>
-          Profile
-        </button>
-        { (user.role === "teacher") ? <button class="button" onClick={handleNew}>
-          New Assignment
-        </button> : null}
-        <button class="button" variant="outline" onClick={handleLogoutClick}>
-          Logout
-        </button>
-      </Nav>
-    </Wrapper>
+    
+    <div class="container">
+      <Wrapper>
+        <div class="block" onClick={handleProfile}>
+          <Logo>
+            <Link to="/">GradeBook✔️</Link>
+          </Logo>
+        </div>
+      </Wrapper>
+      <Wrapper>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <button class="button" onClick={handleProfile}>
+            Profile
+          </button>
+          { (user.role === "teacher") ? <button class="button" onClick={handleNew}>
+            New Assignment
+          </button> : null}
+          <button class="button" variant="outline" onClick={handleLogoutClick}>
+            Logout
+          </button>
+        </nav>
+      </Wrapper>
+    </div>
   );
 }
 
