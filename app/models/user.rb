@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :created_assignments, class_name: "Assignment", foreign_key: :teacher_id, dependent: :destroy
   has_many :graded_assignments, class_name: "Assignment", foreign_key: :student_id, dependent: :destroy
 
-  has_many :lectures, foreign_key: :teacher_id
-  belongs_to :lecture
+  has_many :lectures, foreign_key: :teacher_id, through: :created_assignments
+  belongs_to :lecture, optional: true
 
   # has_many :teacher_gradebooks, class_name: "Gradebook", foreign_key: :teacher_id
   # has_many :student_gradebooks, class_name: "Gradebook", foreign_key: :student_id

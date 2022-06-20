@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_180533) do
+ActiveRecord::Schema.define(version: 2022_06_20_193557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2022_06_20_180533) do
     t.integer "total_points", default: 100
     t.float "graded_points", default: 0.0
     t.float "grade"
+    t.bigint "lecture_id"
+    t.index ["lecture_id"], name: "index_assignments_on_lecture_id"
     t.index ["student_id"], name: "index_assignments_on_student_id"
     t.index ["teacher_id"], name: "index_assignments_on_teacher_id"
   end
@@ -74,10 +76,14 @@ ActiveRecord::Schema.define(version: 2022_06_20_180533) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role", default: 0
+    t.bigint "lecture_id"
+    t.index ["lecture_id"], name: "index_users_on_lecture_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assignments", "lectures"
   add_foreign_key "assignments", "users", column: "student_id"
   add_foreign_key "assignments", "users", column: "teacher_id"
+  add_foreign_key "users", "lectures"
 end

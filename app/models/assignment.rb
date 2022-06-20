@@ -1,7 +1,8 @@
 class Assignment < ApplicationRecord
   belongs_to :student, class_name: "User"
   belongs_to :teacher, class_name: "User"
-
+  belongs_to :lecture
+  
   before_save :calculate_grade
 
   validates :name, presence: true
