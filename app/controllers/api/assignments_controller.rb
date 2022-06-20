@@ -6,7 +6,7 @@ class Api::AssignmentsController < ApplicationController
     end
     
     def create
-        students = User.students.all
+        students = User.includes(:graded_assignments).students
         assignments = students.each { |x| x.graded_assignments.create(assignment_params) }
         render json: assignments, status: 200
     end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :create]
     
     resources :assignments
-    resources :subjects
+    resources :lectures
 
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
