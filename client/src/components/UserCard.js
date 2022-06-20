@@ -29,10 +29,12 @@ const UserCard = ({user}) => {
           <img src={user.image_url} className="photo" alt="User Profile Pic" />
       </div>
       <div class="card-content">
-        <Label>Hey, {user.name}!! Welcome back. Thanks for being a {user.role} here!</Label>
+        <h1 class="title">Hey, {user.name}!! Welcome back. Thanks for being a {user.role} here!</h1>
       
         <div class="content">
           <button class="button" onClick={handleAssignments}>View Assignments</button>
+        </div>
+        <div class="content">
           { (view === true) ? <AssignmentTable assignments={assignments} /> : null }
         </div>
       </div>

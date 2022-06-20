@@ -14,7 +14,7 @@ const AssignmentTable = ({assignments}) => {
   
  return (
     <>
-      <table class="table">
+      <table class="table is-bordered is-hoverable is-centered is-narrow">
         <thead>
           <tr>
             <th>Student</th>
