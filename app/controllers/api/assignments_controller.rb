@@ -5,7 +5,7 @@ class Api::AssignmentsController < ApplicationController
         render json: assignments
     end
     
-    def create ## How can I make sure an assignment is only given to students that are in that lecture?
+    def create
         if params[:lecture_id]
             lecture = Lecture.find(params[:lecture_id])
             students = lecture.students
@@ -15,9 +15,6 @@ class Api::AssignmentsController < ApplicationController
             assignment = Assignment.create!(assignment_params)
             render json: assignment, status: 200
         end  
-        # students = Lecture.find(params[:id]).students
-        # assignments = students.each { |x| x.graded_assignments.create(assignment_params) }
-        # render json: assignments, status: 200
     end
 
     def show
