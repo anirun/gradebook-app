@@ -15,13 +15,8 @@ class LecturesController < ApplicationController
 
   # POST /lectures
   def create
-    @lecture = Lecture.new(lecture_params)
-
-    if @lecture.save
-      render json: @lecture, status: :created, location: @lecture
-    else
-      render json: @lecture.errors, status: :unprocessable_entity
-    end
+    @lecture = Lecture.create!(lecture_params)
+    render json: @lecture, status: :created, location: @lecture
   end
 
   # PATCH/PUT /lectures/1
