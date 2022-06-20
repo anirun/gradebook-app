@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     resources :users do
       resources :assignments, shallow: true
     end
+
+    resources :lectures do
+      resources :assignments, shallow: true
+      resources :users, shallow: true
+    end
+
+
   end
   # all other routes will be load our React application
   # this route definition matches:

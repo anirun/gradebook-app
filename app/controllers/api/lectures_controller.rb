@@ -1,4 +1,4 @@
-class LecturesController < ApplicationController
+class Api::LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :update, :destroy]
 
   # GET /lectures

@@ -33,6 +33,7 @@ const UserCard = ({user}) => {
       </Box>
       <Button onClick={handleAssignments}>View Assignments</Button>
       { (view === true) ? <AssignmentList assignments={assignments} /> : null }
+      
     </>
   )
 }

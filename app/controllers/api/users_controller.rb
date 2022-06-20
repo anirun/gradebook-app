@@ -16,9 +16,13 @@ class Api::UsersController < ApplicationController
     render json: teachers, status: 200
   end
 
-  def students
-    students = User.students
-    render json: students, status: 200
+  def index
+    if params[:lecture_id]
+      lecture = Lecture.find(params[:lecture_id])
+      render json: lecture.students
+    else
+      render json: UserSerializer.new(User.all).serializable_hash
+    end
   end
 
   private
