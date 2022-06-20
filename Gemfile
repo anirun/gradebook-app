@@ -15,6 +15,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Media file upload
 gem 'activestorage'
 
+gem "bulma-rails", "~> 0.8.0"
+
 # reset-pk-sequence when reseeding
 gem 'activerecord-reset-pk-sequence'
 

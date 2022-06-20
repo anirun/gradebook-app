@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
+import { Error, Input, FormField, Label, Textarea } from "../styles";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -87,7 +87,7 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
+        <button class="button" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
       </FormField>
       <FormField>
         {errors.map((err) => (

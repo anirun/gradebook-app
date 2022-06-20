@@ -1,9 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { Button } from "../styles";
 
 function NavBar({ user, setUser }) {
+  let history = useHistory()
+  
+  function handleProfile() {
+    history.push('/profile')
+  }
+
+  function handleNew() {
+    history.push('/newassignment')
+  }
+
+
   function handleLogoutClick() {
     fetch("/api/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -18,15 +28,15 @@ console.log(user.role)
         <Link to="/">GradeBook✔️</Link>
       </Logo>
       <Nav>
-        <Button as={Link} to="/profile">
+        <button class="button" onClick={handleProfile}>
           Profile
-        </Button>
-        { (user.role === "teacher") ? <Button as={Link} to="/newassignment">
+        </button>
+        { (user.role === "teacher") ? <button class="button" onClick={handleNew}>
           New Assignment
-        </Button> : null}
-        <Button variant="outline" onClick={handleLogoutClick}>
+        </button> : null}
+        <button class="button" variant="outline" onClick={handleLogoutClick}>
           Logout
-        </Button>
+        </button>
       </Nav>
     </Wrapper>
   );

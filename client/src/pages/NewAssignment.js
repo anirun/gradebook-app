@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Button, Error, FormField, Input, Label } from "../styles";
+import { Error, FormField, Input, Label } from "../styles";
 
 function NewAssignment({ user, lecture }) {
   const [name, setName] = useState("homework");
@@ -83,9 +83,9 @@ function NewAssignment({ user, lecture }) {
             </select>  
           </FormField>
           <FormField>
-            <Button color="primary" type="submit">
+            <button class="button" color="primary" type="submit">
               {isLoading ? "Loading..." : "Assign to All Students"}
-            </Button>
+            </button>
           </FormField>
           <FormField>
             {errors.map((err) => (
