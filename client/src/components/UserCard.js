@@ -24,16 +24,19 @@ const UserCard = ({user}) => {
   }
   
   return (
-    <>
-      <Box>
-        <img src={user.image_url} className="photo" alt="User Profile Pic" />
-      </Box>
-      <Box>    
+    <div class="card">
+      <div class="card-image">
+          <img src={user.image_url} className="photo" alt="User Profile Pic" />
+      </div>
+      <div class="card-content">
         <Label>Hey, {user.name}!! Welcome back. Thanks for being a {user.role} here!</Label>
-      </Box>
-      <button class="button" onClick={handleAssignments}>View Assignments</button>
-      { (view === true) ? <AssignmentList assignments={assignments} /> : null }
-    </>
+      
+        <div class="content">
+          <button class="button" onClick={handleAssignments}>View Assignments</button>
+          { (view === true) ? <AssignmentList assignments={assignments} /> : null }
+        </div>
+      </div>
+    </div>
   )
 }
 
