@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
-import RecipeList from "../pages/RecipeList";
 import NewAssignment from "../pages/NewAssignment";
 import UserCard from "./UserCard";
 
@@ -32,7 +31,7 @@ function App() {
             <NewAssignment user={user} />
           </Route>
           <Route path="/">
-            <RecipeList />
+            <UserCard user={user} />
           </Route>
         </Switch>
       </main>

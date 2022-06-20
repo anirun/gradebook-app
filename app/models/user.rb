@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
   
-  has_many :recipes
-  
   has_many :created_assignments, class_name: "Assignment", foreign_key: :teacher_id, dependent: :destroy
   has_many :graded_assignments, class_name: "Assignment", foreign_key: :student_id, dependent: :destroy
 
