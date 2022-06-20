@@ -11,7 +11,7 @@ function NavBar({ user, setUser }) {
       }
     });
   }
-
+console.log(user.role)
   return (
     <Wrapper>
       <Logo>
@@ -21,9 +21,9 @@ function NavBar({ user, setUser }) {
         <Button as={Link} to="/profile">
           Profile
         </Button>
-        <Button as={Link} to="/newassignment">
+        { (user.role === "teacher") ? <Button as={Link} to="/newassignment">
           New Assignment
-        </Button>
+        </Button> : null}
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
