@@ -1,8 +1,15 @@
 class Api::AssignmentsController < ApplicationController
+    before_action :authorize_teacher, only: [:create]
 
     def index
-        assignments = @current_user.teacher? ? @current_user.created_assignments : @current_user.graded_assignments
-        render json: assignments
+        if params[:lecture_id]
+            lecture = Lecture.find(params[:lecture_id])
+            assignments = lecture.graded_assignments
+            render json: assignments
+        else
+            assignments = @current_user.teacher? ? @current_user.created_assignments : @current_user.graded_assignments
+            render json: assignments
+        end
     end
     
     def create
