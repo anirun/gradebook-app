@@ -14,4 +14,7 @@ u3 = User.create!(name: "Hanna", username: "hanna", password: "1234", image_url:
 a1 = Assignment.create!(name: "homework", student: u2, teacher: u1, graded_points: 75, comments: "Okay.")
 a2 = Assignment.create!(name: "homework", student: u3, teacher: u1, graded_points: 85, comments: "Good.")
 
+l1 = Lecture.create!(name: "English", grade: 6, teacher: u1)
+l2 = Lecture.create!(name: "Spanish", grade: 8, teacher: u1)
+
 puts '🪴🪴🪴🪴🪴'
