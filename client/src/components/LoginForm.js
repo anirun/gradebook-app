@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Error, Input, FormField, Label } from "../styles";
+import { Error, FormField, Label } from "../styles";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ function LoginForm({ onLogin }) {
     <form onSubmit={handleSubmit}>
       <FormField>
         <Label htmlFor="username">Username</Label>
-        <Input
+        <input class="input is-rounded"
           type="text"
           id="username"
           autoComplete="off"
@@ -40,7 +40,7 @@ function LoginForm({ onLogin }) {
       </FormField>
       <FormField>
         <Label htmlFor="password">Password</Label>
-        <Input
+        <input class="input is-rounded"
           type="password"
           id="password"
           autoComplete="current-password"

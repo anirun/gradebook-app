@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Error, FormField, Input, Label } from "../styles";
+import { Error, FormField, Label } from "../styles";
 
 function NewAssignment({ user }) {
   const [name, setName] = useState("homework");

@@ -37,9 +37,11 @@ console.log(user.role)
           <button class="button" onClick={handleProfile}>
             Profile
           </button>
+          &nbsp;&nbsp;
           { (user.role === "teacher") ? <button class="button" onClick={handleNew}>
             New Assignment
           </button> : null}
+          &nbsp;&nbsp;
           <button class="button" variant="outline" onClick={handleLogoutClick}>
             Logout
           </button>
