@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
     get "/teachers", to: "users#teachers"
     get "/students", to: "users#students"
+
+    resources :users do
+      resources :assignments, shallow: true
+    end
   end
   # all other routes will be load our React application
   # this route definition matches:
