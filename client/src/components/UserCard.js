@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Label } from '../styles'
-import AssignmentList from '../pages/AssignmentList'
+import AssignmentTable from '../pages/AssignmentTable'
 import "../styles.css"
 
 const UserCard = ({user}) => {
@@ -33,7 +33,7 @@ const UserCard = ({user}) => {
       
         <div class="content">
           <button class="button" onClick={handleAssignments}>View Assignments</button>
-          { (view === true) ? <AssignmentList assignments={assignments} /> : null }
+          { (view === true) ? <AssignmentTable assignments={assignments} /> : null }
         </div>
       </div>
     </div>
