@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :assignments, shallow: true
+      resources :lectures, shallow: true
     end
 
     resources :lectures do

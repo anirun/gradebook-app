@@ -13,7 +13,7 @@ function NewAssignment({ user }) {
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`api/lectures`, {
+    fetch(`api/users/${user.id}/lectures`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

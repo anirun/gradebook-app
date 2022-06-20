@@ -3,9 +3,14 @@ class Api::LecturesController < ApplicationController
 
   # GET /lectures
   def index
-    @lectures = Lecture.all
-
-    render json: @lectures
+    if params[:user_id]
+        user = User.find(params[:user_id])
+        lectures = user.lectures
+        render json: lectures
+    else
+      @lectures = Lecture.all
+      render json: @lectures
+    end
   end
 
   # GET /lectures/1
