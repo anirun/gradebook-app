@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Error, Input, FormField, Label, Textarea } from "../styles";
+import { Error, FormField, Label } from "../styles";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState("");
+  const [role, setRole] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,11 +21,12 @@ function SignUpForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        name: name,
         username,
         password,
         password_confirmation: passwordConfirmation,
         image_url: imageUrl,
-        bio,
+        role: role.to_int,
       })
     }).then((r) => {
       setIsLoading(false);
@@ -39,8 +41,18 @@ function SignUpForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <FormField>
+        <Label htmlFor="name">Your Name</Label>
+        <input class="input is-rounded"
+          type="text"
+          id="name"
+          autoComplete="off"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </FormField>
+      <FormField>
         <Label htmlFor="username">Username</Label>
-        <Input
+        <input class="input is-rounded"
           type="text"
           id="username"
           autoComplete="off"
@@ -50,7 +62,7 @@ function SignUpForm({ onLogin }) {
       </FormField>
       <FormField>
         <Label htmlFor="password">Password</Label>
-        <Input
+        <input class="input is-rounded"
           type="password"
           id="password"
           value={password}
@@ -60,7 +72,7 @@ function SignUpForm({ onLogin }) {
       </FormField>
       <FormField>
         <Label htmlFor="password">Password Confirmation</Label>
-        <Input
+        <input class="input is-rounded"
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
@@ -70,7 +82,7 @@ function SignUpForm({ onLogin }) {
       </FormField>
       <FormField>
         <Label htmlFor="imageUrl">Profile Image</Label>
-        <Input
+        <input class="input is-rounded"
           type="text"
           id="imageUrl"
           value={imageUrl}
@@ -78,13 +90,16 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
+        <div class="control" value={role} onChange={(e) => setRole(e.target.value)}>
+          <label class="radio">
+            <input type="radio" name="answer" value="0"/>
+            Teacher
+          </label>
+          <label class="radio">
+            <input type="radio" name="answer" value="1"/>
+            Student
+          </label>
+        </div>
       </FormField>
       <FormField>
         <button class="button" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>

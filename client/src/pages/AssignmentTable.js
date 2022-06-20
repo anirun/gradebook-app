@@ -28,11 +28,11 @@ const AssignmentTable = ({assignments}) => {
         {renderAssignments}
         </tbody>
         <tfoot>
-          <tr>
+        <tr>
             <th>Student</th>
             <th>Assignment</th>
-            <th><abbr title="Graded Points">Pts</abbr></th>
-            <th><abbr title="Total Points">Total</abbr></th>
+            <th><abbr title="Graded Points">Points</abbr></th>
+            <th><abbr title="Total Points">Points Possible</abbr></th>
             <th>Grade</th>
           </tr>
         </tfoot>

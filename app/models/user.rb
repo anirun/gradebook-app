@@ -15,6 +15,7 @@ class User < ApplicationRecord
   scope :admin, -> {where(role: 2)}
   
   validates :username, presence: true, uniqueness: true
+  validates :name, presence: true
 
   enum role: %i(teacher student admin)
 

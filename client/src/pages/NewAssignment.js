@@ -55,7 +55,7 @@ function NewAssignment({ user }) {
         <form onSubmit={handleSubmit}>
           <FormField>
             <Label htmlFor="name">Name</Label>
-            <Input
+            <input class="input is-rounded"
               type="text"
               id="name"
               value={name}
@@ -64,7 +64,7 @@ function NewAssignment({ user }) {
           </FormField>
           <FormField>
             <Label htmlFor="totalPoints">Points Possible</Label>
-            <Input
+            <input class="input is-rounded"
               type="number"
               id="totalPoints"
               value={totalPoints}
@@ -73,14 +73,16 @@ function NewAssignment({ user }) {
           </FormField>
           <FormField>  
             <Label htmlFor="lecture"> Lecture? </Label>  
-            <select id= "lecture" onChange={(e) => setLectureId(e.target.value)} >  
-              <option> ---Choose your lecture!--- </option>  
-              {lectureList.map((lecture) =>
-              <option key={lecture.id} value={lecture.id}>
-                {lecture.name}
-              </option>
-              )}
-            </select>  
+             <div class="select is-rounded">
+              <select id= "lecture" onChange={(e) => setLectureId(e.target.value)} >  
+                <option> ---Choose your lecture!--- </option>  
+                {lectureList.map((lecture) =>
+                <option key={lecture.id} value={lecture.id}>
+                  {lecture.name}
+                </option>
+                )}
+              </select>
+            </div>
           </FormField>
           <FormField>
             <button class="button" color="primary" type="submit">
