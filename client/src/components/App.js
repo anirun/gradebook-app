@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import RecipeList from "../pages/RecipeList";
-import NewRecipe from "../pages/NewRecipe";
+import NewAssignment from "../pages/NewAssignment";
 import UserCard from "./UserCard";
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
           <Route path="/profile">
             <UserCard user={user} />
           </Route>
-          <Route path="/new">
-            <NewRecipe user={user} />
+          <Route path="/newassignment">
+            <NewAssignment user={user} />
           </Route>
           <Route path="/">
             <RecipeList />
