@@ -22,7 +22,7 @@ function NewAssignment({ user }) {
     .then((d) => {
       setLectureList(d)
     })
-  }, []) 
+  }, [user.id]) 
 
   function handleSubmit(e) {
     e.preventDefault();

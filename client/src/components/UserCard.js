@@ -7,20 +7,32 @@ const UserCard = ({user}) => {
 
   let [view, setView] = useState(false)
   let [assignments, setAssignments] = useState([])
+  let [lectures, setLectures] = useState([])
 
   useEffect(() => {
-    fetch(`/api/assignments`)
+    fetch(`/api/users/${user.id}/lectures`)
     .then((r) => r.json())
-    .then((r) => setAssignments(r))
+    .then((r) => {
+      setLectures(r)
+    })
   }, [])
+
 
   const handleAssignments = () => {
     (view === false) ? setView(true) : setView(false)
-    if (user.role === 0) {
-      setAssignments(user.created_assignments)
-    } else if (user.role === 1) {
+    if (user.role === "student") {
       setAssignments(user.graded_assignments)
     } 
+  }
+
+  const handleClick = (e) => {
+      setView(true)
+      fetch(`/api/lectures/${e.target.value}`)
+      .then((r) => r.json())
+      .then((r) => {
+        console.log(r.graded_assignments)
+        setAssignments(r.graded_assignments)  
+      })
   }
   
   return (
@@ -33,7 +45,8 @@ const UserCard = ({user}) => {
           <h4 class="title">Hey, {user.name}!! Welcome back. Thanks for being a {user.role} here!</h4>
         
           <div class="content">
-            <button class="button" onClick={handleAssignments}>View Assignments</button>
+            { (user.role === "student") ? <button class="button" onClick={handleAssignments}>View Assignments</button> : null }
+            { lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleClick(e)}>{l.name}</button>))}
           </div>
           <div class="content">
             { (view === true) ? <AssignmentTable assignments={assignments} /> : null }
