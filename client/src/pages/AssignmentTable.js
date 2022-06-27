@@ -5,10 +5,10 @@ const AssignmentTable = ({assignments}) => {
     const renderAssignments = assignments.map( (assignment, i) => (
       <tr key={i}>
         <td>{assignment.student.name}</td>
-        <td>{assignment.name}</td>
-        <td>{assignment.graded_points}</td>
-        <td>{assignment.total_points}</td>
-        <td>{assignment.grade}</td>
+        <td>{assignment.assignment.name}</td>
+        <td>{assignment.assignment.graded_points}</td>
+        <td>{assignment.assignment.total_points}</td>
+        <td>{assignment.assignment.grade}</td>
       </tr>
     ) )
   

@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    render json: @current_user
+    render json: @current_user, include: [:assignments, :lectures]
   end
 
   def teachers

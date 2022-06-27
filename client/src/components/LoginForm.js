@@ -54,7 +54,7 @@ function LoginForm({ onLogin }) {
         </button>
       </FormField>
       <FormField>
-        {errors.map((err) => (
+        {errors?.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
       </FormField>

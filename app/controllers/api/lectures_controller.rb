@@ -5,8 +5,8 @@ class Api::LecturesController < ApplicationController
   def index
     if params[:user_id]
         user = User.find(params[:user_id])
-        lectures = user.lectures
-        render json: lectures
+        @lectures = user.lectures
+        render json: @lectures, include: :assignments
     else
       @lectures = Lecture.all
       render json: @lectures
@@ -15,7 +15,7 @@ class Api::LecturesController < ApplicationController
 
   # GET /lectures/1
   def show
-    render json: @lecture
+    render json: @lecture, include: [:assignments, :user]
   end
 
   # POST /lectures

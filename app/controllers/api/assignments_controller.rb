@@ -7,7 +7,7 @@ class Api::AssignmentsController < ApplicationController
             assignments = lecture.graded_assignments
             render json: assignments
         else
-            assignments = @current_user.teacher? ? @current_user.created_assignments : @current_user.graded_assignments
+            assignments = @current_user.teacher? ? @current_user.given_assignments : @current_user.graded_assignments
             render json: assignments
         end
     end
@@ -26,7 +26,7 @@ class Api::AssignmentsController < ApplicationController
 
     def show
         assignment = Assignment.find(params[:id])
-        render json: assignment, status: 201
+        render json: assignment, include: [:user, :lecture]
     end
 
     private
