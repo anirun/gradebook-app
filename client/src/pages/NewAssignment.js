@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Error, FormField, Label } from "../styles";
@@ -7,22 +7,9 @@ function NewAssignment({ user }) {
   const [name, setName] = useState("homework");
   const [totalPoints, setTotalPoints] = useState("100");
   const [lectureId, setLectureId] = useState("Lecture?");
-  const [lectureList, setLectureList] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
-
-  useEffect(() => {
-    fetch(`api/users/${user.id}/lectures`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((r) => r.json())
-    .then((d) => {
-      setLectureList(d)
-    })
-  }, [user.id]) 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -43,7 +30,7 @@ function NewAssignment({ user }) {
       if (r.ok) {
         history.push("/");
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.error));
       }
     });
   }
@@ -76,7 +63,7 @@ function NewAssignment({ user }) {
              <div class="select is-rounded">
               <select id= "lecture" onChange={(e) => setLectureId(e.target.value)} >  
                 <option> ---Choose your lecture!--- </option>  
-                {lectureList.map((lecture) =>
+                {user.lectures.map((lecture) =>
                 <option key={lecture.id} value={lecture.id}>
                   {lecture.name}
                 </option>

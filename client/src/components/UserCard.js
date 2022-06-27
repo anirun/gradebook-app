@@ -9,23 +9,21 @@ const UserCard = ({user}) => {
   let [lectureId, setLectureId] = useState(``)
   let [assignments, setAssignments] = useState([])
 
-  const handleLectureChange = (e) => {
+  const handleLectureAssignments = (e) => {
+    setView(false)
     setLectureId(parseInt(e.target.value))
-    console.log(`found user's assignments`)
+    console.log(`lecture has id of ${lectureId}`)
     let allAssignments = user.assignments
     let foundAssignments = allAssignments.filter(l => l.assignment.lecture_id === lectureId)
-    console.log(`found user's assignments for lecture number ${lectureId}`)
+    console.log(`found assignments for lecture number ${lectureId}`)
     setAssignments(foundAssignments)
+    console.log(foundAssignments)
+    setView(true)
   }
 
-  const handleLecture = (e) => {
-    if (view === false) {
-      setView(true)
-      handleLectureChange(e)
-    } else {
-      console.log(`hi!`)
-      handleLectureChange(e)
-    }
+  const handleStudentAssignments = () => {
+    let a = user.assignments
+    (user.role === "student") ? setAssignments(a) : null
   }
   
   return (
@@ -39,11 +37,11 @@ const UserCard = ({user}) => {
           <h4 class="title">Hey, {user.name}!! Welcome back. Thanks for being a {user.role} here!</h4>
         
           <div class="content">
-            { (user.role === "student") ? <button class="button" onClick={handleLecture}>View Assignments</button> : null }
-            { user.lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleLecture(e)} >{l.name}</button>))}
+            { (user.role === "student") ? <button class="button" onClick={handleStudentAssignments}>View Assignments</button> : null }
+            { user.lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleLectureAssignments(e)} >{l.name}</button>))}
           </div>
           <div class="content">
-            { (view === true) ? <AssignmentTable assignments={assignments} /> : null }
+            { (view === true) ? <AssignmentTable assignments={assignments} /> : "Check out your assignments for the lectures above..." }
           </div>
         </div>
       </div>

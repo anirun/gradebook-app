@@ -16,7 +16,7 @@ class Api::AssignmentsController < ApplicationController
         if params[:lecture_id]
             lecture = Lecture.find(params[:lecture_id])
             students = lecture.students
-            assignments = students.each { |x| x.graded_assignments.create(assignment_params) }
+            assignments = students.each { |x| x.graded_assignments.create!(assignment_params) }
             render json: assignments, status: 200
         else
             assignment = Assignment.create!(assignment_params)
