@@ -1,15 +1,12 @@
 import React from 'react'
+import AssignmentRow from '../components/AssignmentRow';
 
 const AssignmentTable = ({assignments}) => {
+
+  
     
-    const renderAssignments = assignments.map( (assignment, i) => (
-      <tr key={i}>
-        <td>{assignment.student.name}</td>
-        <td>{assignment.assignment.name}</td>
-        <td>{assignment.assignment.graded_points}</td>
-        <td>{assignment.assignment.total_points}</td>
-        <td>{assignment.assignment.grade}</td>
-      </tr>
+    const renderAssignments = assignments.map( (assignment) => (
+      <AssignmentRow key={assignment.assignment.id} assignment={assignment} />
     ) )
   
  return (

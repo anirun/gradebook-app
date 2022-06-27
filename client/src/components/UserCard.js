@@ -9,22 +9,21 @@ const UserCard = ({user}) => {
   let [lectureId, setLectureId] = useState(``)
   let [assignments, setAssignments] = useState([])
 
-  const handleLectureAssignments = (e) => {
-    setView(false)
-    setLectureId(parseInt(e.target.value))
-    console.log(`lecture has id of ${lectureId}`)
-    let allAssignments = user.assignments
-    let foundAssignments = allAssignments.filter(l => l.assignment.lecture_id === lectureId)
-    console.log(`found assignments for lecture number ${lectureId}`)
-    setAssignments(foundAssignments)
-    console.log(foundAssignments)
-    setView(true)
-  }
-
   const handleStudentAssignments = () => {
     let a = user.assignments
     (user.role === "student") ? setAssignments(a) : null
   }
+
+  const handleLectureAssignments = (e) => {
+    setView(false)
+    setLectureId(parseInt(e.target.value))
+    let allAssignments = user.assignments
+    let foundAssignments = allAssignments.filter(l => l.assignment.lecture_id === lectureId)
+    setAssignments(foundAssignments)
+    setView(true)
+  }
+
+
   
   return (
     <Wrapper>

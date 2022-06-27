@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import NewAssignment from "../pages/NewAssignment";
 import UserCard from "./UserCard";
+import AssignmentCard from "../pages/AssignmentCard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -26,6 +27,9 @@ function App() {
         <Switch>
           <Route path="/profile">
             <UserCard user={user} />
+          </Route>
+          <Route path="/assignments/:id">
+            <AssignmentCard user={user} />
           </Route>
           <Route path="/newassignment">
             <NewAssignment user={user} />

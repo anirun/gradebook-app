@@ -1,5 +1,6 @@
 class Api::AssignmentsController < ApplicationController
-    before_action :authorize_teacher, only: [:create]
+    before_action :authorize_teacher, only: [:create, :update]
+    before_action :set_assignment, only: [:show, :update, :destroy]
 
     def index
         if params[:lecture_id]
@@ -25,8 +26,16 @@ class Api::AssignmentsController < ApplicationController
     end
 
     def show
-        assignment = Assignment.find(params[:id])
-        render json: assignment, include: [:user, :lecture]
+        render json: @assignment, include: [:user, :lecture]
+    end
+
+    def update
+        @assignment.update(assignment_params)
+        render json: @assignment, include: [:user, :lecture]
+    end
+
+    def destroy
+        @assignment.destroy
     end
 
     private
@@ -34,5 +43,9 @@ class Api::AssignmentsController < ApplicationController
     def assignment_params
         params.permit(:name, :total_points, :graded_points, :student_id, :teacher_id, :comments, :lecture_id)
     end
+
+    def set_assignment
+        @assignment = Assignment.find(params[:id])
+      end
 
 end
