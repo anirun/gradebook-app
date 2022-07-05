@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 
-function Login({ onLogin }) {
+function Login( ) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -11,7 +11,7 @@ function Login({ onLogin }) {
       <Logo>GradeBook✔️</Logo>
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm />
           <Divider />
           <p>
             Don't have an account? &nbsp;
@@ -22,7 +22,7 @@ function Login({ onLogin }) {
         </>
       ) : (
         <>
-          <SignUpForm onLogin={onLogin} />
+          <SignUpForm />
           <Divider />
           <p>
             Already have an account? &nbsp;

@@ -7,9 +7,6 @@ class User < ApplicationRecord
   has_many :given_lectures, through: :given_assignments, source: :lecture
   has_many :taken_lectures, through: :graded_assignments, source: :lecture
 
-  # has_many :teacher_gradebooks, class_name: "Gradebook", foreign_key: :teacher_id
-  # has_many :student_gradebooks, class_name: "Gradebook", foreign_key: :student_id
-  
   scope :teachers, -> {where(role: 0)}
   scope :students, -> {where(role: 1)}
   

@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AssignmentTable from '../pages/AssignmentTable'
 import "../styles.css"
 import styled from "styled-components";
+import { UserContext } from '../context/user';
+import LoginForm from './LoginForm';
 
-const UserCard = ({user}) => {
+const UserCard = ( ) => {
+  const { user } = useContext(UserContext);
 
   let [view, setView] = useState(false)
   let [lectureId, setLectureId] = useState(``)
@@ -11,11 +14,9 @@ const UserCard = ({user}) => {
 
   // load assignments specific to lecture
   const handleLectureAssignments = (e) => {
-    // setView(false)
+    setView(false)
     setLectureId(parseInt(e.target.value))
-    // debugger
     let foundAssignments = user.assignments.filter(l => l.assignment.lecture_id === lectureId)
-    console.log(foundAssignments)
     setView(true)
     setAssignments(foundAssignments)
   }
@@ -24,7 +25,9 @@ const UserCard = ({user}) => {
     let a = user.assignments
     (user.role === "student") ? setAssignments(a) : null
   }
-  
+  console.log(user)
+  if (!user) return <Wrapper><LoginForm /></Wrapper>;
+
   return (
     <Wrapper>
       <div class="card">

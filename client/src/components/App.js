@@ -1,44 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
-import Login from "../pages/Login";
 import NewAssignment from "../pages/NewAssignment";
 import UserCard from "./UserCard";
 import AssignmentCard from "../pages/AssignmentCard";
+import { UserContext } from "../context/user";
+import Signout from "./Signout";
+import Notification from "./Notification";
+import SignUpForm from "./SignUpForm.js";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const {getCurrentUser} = useContext(UserContext)
 
   useEffect(() => {
-    // auto-login
-    fetch("/api/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+    getCurrentUser()
+  }, [])
 
-  if (!user) return <Login onLogin={setUser} />;
+  // useEffect(() => {
+  //   // auto-login
+  //   fetch("/api/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
+
+  // if (!user) return <Login />;
 
   return (
     <>
-      <NavBar user={user} setUser={setUser} />
-      <main>
-        <Switch>
-          <Route path="/profile">
-            <UserCard user={user} />
-          </Route>
-          <Route path="/assignments/:id">
-            <AssignmentCard user={user} />
-          </Route>
-          <Route path="/newassignment">
-            <NewAssignment user={user} />
-          </Route>
-          <Route path="/">
-            <UserCard user={user} />
-          </Route>
-        </Switch>
-      </main>
+      <Router>
+        <Notification />
+        <NavBar />
+        <main>
+          <Switch>
+            <Route path="/profile">
+              <UserCard />
+            </Route>
+            <Route path="/assignments/:id">
+              <AssignmentCard />
+            </Route>
+            <Route path="/newassignment">
+              <NewAssignment />
+            </Route>
+            <Route path="/signup">
+              <SignUpForm />
+            </Route>
+            <Route path="/signout">
+              <Signout />
+            </Route>
+            <Route path="/">
+              <UserCard />
+            </Route>
+          </Switch>
+        </main>
+      </Router>
     </>
   );
 }

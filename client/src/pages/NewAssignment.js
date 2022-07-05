@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Error, FormField, Label } from "../styles";
+import { UserContext } from "../context/user";
 
-function NewAssignment({ user }) {
+function NewAssignment( ) {
+  const { user } = useContext(UserContext)
   const [name, setName] = useState("homework");
   const [totalPoints, setTotalPoints] = useState("100");
   const [lectureId, setLectureId] = useState("Lecture?");

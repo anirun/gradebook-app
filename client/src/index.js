@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { UserProvider } from "./context/user.js";
+import { MessageProvider } from "./context/message.js";
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -21,9 +23,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <BrowserRouter>
-    <GlobalStyle />
-    <App />
-  </BrowserRouter>,
+  <MessageProvider>
+    <UserProvider>
+      <GlobalStyle />    
+      <App />
+    </UserProvider>
+  </MessageProvider>,
   document.getElementById("root")
 );
