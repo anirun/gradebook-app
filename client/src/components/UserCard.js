@@ -9,23 +9,28 @@ const UserCard = ( ) => {
   const { user } = useContext(UserContext);
 
   let [view, setView] = useState(false)
-  let [lectureId, setLectureId] = useState(``)
+  let [lectureId, setLectureId] = useState()
   let [assignments, setAssignments] = useState([])
 
   // load assignments specific to lecture
   const handleLectureAssignments = (e) => {
-    setView(false)
-    setLectureId(parseInt(e.target.value))
+    setView(currentView => !currentView)
+    let id = parseInt(e.target.value)
+    setLectureId(id)
     let foundAssignments = user.assignments.filter(l => l.assignment.lecture_id === lectureId)
-    setView(true)
     setAssignments(foundAssignments)
+    // setView(currentView => !currentView)
   }
   // load all student's assignments
   const handleStudentAssignments = () => {
     let a = user.assignments
-    (user.role === "student") ? setAssignments(a) : null
+    if (user.role === "student") {
+      setAssignments(a)
+    } else {
+      return null
+    }
   }
-  console.log(user)
+  // console.log(user)
   if (!user) return <Wrapper><LoginForm /></Wrapper>;
 
   return (

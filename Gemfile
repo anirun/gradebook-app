@@ -21,9 +21,17 @@ gem "bulma-rails", "~> 0.8.0"
 gem 'activerecord-reset-pk-sequence'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
+# google omniauth
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
+# hide env file for oauth
 gem 'dotenv-rails'
+
+# JSONAPI::Serializer
+gem 'jsonapi-serializer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

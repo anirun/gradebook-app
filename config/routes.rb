@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
 
+    get "/auth/:provider/callback", to: "sessions#omniauth"
+
     get "/teachers", to: "users#teachers"
     get "/students", to: "users#students"
 

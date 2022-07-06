@@ -3,9 +3,10 @@ import { FormField, Label } from "../styles";
 import Notification from "./Notification";
 import { UserContext } from "../context/user";
 import { MessageContext } from "../context/message";
+import { GoogleLogin } from 'react-google-login';
 
 function LoginForm( ) {
-  const { user, setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const { message, setMessage } = useContext(MessageContext)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +31,35 @@ function LoginForm( ) {
     });
   }
 
+  const handleGoogle = (response) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            // 'Authorization': `Bearer ${response.Zi.accessToken}`,
+            'Content-Type': 'application/json',
+            // 'access_token': `${response.Zi.accessToken}`
+        },
+        body: JSON.stringify(response)
+    }
+    fetch(`/api/auth/google_oauth2/callback`, requestOptions)
+    .then(res => {
+      if (res.ok) {
+        res.json().then(data => {
+          setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
+          setMessage({message: "User successfully logged in", color: "green"})
+        })
+      }
+      else {
+        res.json().then(data => {
+          setMessage({message: data.error, color: "red"})
+        })
+      }
+    })
+    .catch(err => setMessage({message: err.message, color: "red"}))
+  }
+
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <FormField>
         <Label htmlFor="username">Username</Label>
@@ -57,11 +86,20 @@ function LoginForm( ) {
           {isLoading ? "Loading..." : "Login"}
         </button>
       </FormField>
+      
       <FormField>
         {message ? <Notification>{message}</Notification> : null }
       </FormField>
     </form>
+
+<FormField>
+<GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={handleGoogle} onFailure={handleGoogle}/>
+</FormField>
+</>
   );
 }
+
+
+
 
 export default LoginForm;

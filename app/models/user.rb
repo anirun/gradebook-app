@@ -15,4 +15,12 @@ class User < ApplicationRecord
 
   enum role: %i(teacher student)
 
+  def self.from_omniauth(auth)
+    self.find_or_create_by(provider: auth.fetch(:provider), uid: auth.fetch(:uid)) do |u|
+        u.email = auth.fetch(:email)
+        u.password = SecureRandom.hex(20)
+        u.username = auth.fetch(:username).downcase.gsub(" ", "_")
+    end
+end
+
 end

@@ -1,13 +1,13 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
-import NewAssignment from "../pages/NewAssignment";
+import Notification from "./Notification";
+import Signout from "./Signout";
+import SignUpForm from "./SignUpForm.js";
 import UserCard from "./UserCard";
+import NewAssignment from "../pages/NewAssignment";
 import AssignmentCard from "../pages/AssignmentCard";
 import { UserContext } from "../context/user";
-import Signout from "./Signout";
-import Notification from "./Notification";
-import SignUpForm from "./SignUpForm.js";
 
 function App() {
   const {getCurrentUser} = useContext(UserContext)
@@ -20,7 +20,7 @@ function App() {
   //   // auto-login
   //   fetch("/api/me").then((r) => {
   //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
+  //       r.json().then(() => getCurrentUser());
   //     }
   //   });
   // }, []);

@@ -11,9 +11,9 @@ function UserProvider({ children }) {
     const getCurrentUser = useCallback(async () => { 
         try {
             const resp = await fetch("/api/me")
-             if (resp.status === 200) {
+             if (resp.status === 200 || resp.status === 304) {
                 const data = await resp.json()
-                setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
+                setUser(data)
              } else {
                 const errorObj = await resp.json()
                 setMessage(errorObj.error)

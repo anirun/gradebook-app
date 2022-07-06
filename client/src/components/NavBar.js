@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/user";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const style = {
@@ -16,30 +16,14 @@ const style = {
 
 const NavBar = () => {
   const {user} = useContext(UserContext)
-  let history = useHistory();
-  
-  function handleProfile() {
-    history.push('/profile')
-  }
-
-  // function handleNew() {
-  //   history.push('/newassignment')
-  // }
-
-
-  // function handleLogoutClick() {
-  //   history.push('/signout');
-  // }
 
   return (
     
     <div class="container">
       <Wrapper>
-        <div class="block" onClick={handleProfile}>
-          <Logo>
-            <NavLink to="/">GradeBook✔️</NavLink>
-          </Logo>
-        </div>
+        <Logo>
+          <NavLink to="/">GradeBook✔️</NavLink>
+        </Logo>
       </Wrapper>
       <Wrapper>
         <NavLink
