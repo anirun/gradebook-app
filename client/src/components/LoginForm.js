@@ -31,6 +31,8 @@ function LoginForm( ) {
     });
   }
 
+  console.log(message)
+
   const handleGoogle = (response) => {
     const requestOptions = {
         method: 'POST',
@@ -93,7 +95,7 @@ function LoginForm( ) {
     </form>
 
 <FormField>
-<GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={handleGoogle} onFailure={handleGoogle}/>
+<GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" access="offline" scope="email profile" onSubmit={handleGoogle} />
 </FormField>
 </>
   );
