@@ -75,9 +75,11 @@ function UserProvider({ children }) {
             const resp = await fetch("/api/logout", {
                 method: "DELETE"
             })
-            setMessage("You have been logged out")
-            setUser(null)
-            return true
+            if (resp.status === 201) {
+                setMessage("You have been logged out")
+                setUser(null)
+                return true
+            }
         } catch(e) {
             setMessage(e.message)
             return false

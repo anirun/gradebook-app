@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
-import Notification from "./Notification";
 import Signout from "./Signout";
 import SignUpForm from "./SignUpForm.js";
 import UserCard from "./UserCard";
 import NewAssignment from "../pages/NewAssignment";
 import AssignmentCard from "../pages/AssignmentCard";
+import UserAppointments from "../pages/UserAppointments";
 import { UserContext } from "../context/user";
 
 function App() {
@@ -16,26 +16,17 @@ function App() {
     getCurrentUser()
   }, [])
 
-  // useEffect(() => {
-  //   // auto-login
-  //   fetch("/api/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then(() => getCurrentUser());
-  //     }
-  //   });
-  // }, []);
-
-  // if (!user) return <Login />;
-
   return (
     <>
       <Router>
-        {/* <Notification /> */}
         <NavBar />
         <main>
           <Switch>
             <Route path="/profile">
               <UserCard />
+            </Route>
+            <Route path="/appointments">
+              <UserAppointments />
             </Route>
             <Route path="/assignments/:id">
               <AssignmentCard />

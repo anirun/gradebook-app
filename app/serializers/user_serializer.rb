@@ -25,9 +25,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def appointments
     if self.object.teacher? 
-      self.object.teacher_appointments.map { |a| {assignment:a, student:a.student}}
+      self.object.teacher_appointments.map { |a| {appointment:a, student:a.student}}
     else
-      self.object.student_appointments.map { |a| {assignment:a, teacher:a.teacher}}
+      self.object.student_appointments.map { |a| {appointment:a, teacher:a.teacher}}
     end
   end
   

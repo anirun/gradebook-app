@@ -19,8 +19,8 @@ const UserCard = ( ) => {
     setLectureId(id)
     let foundAssignments = user.assignments.filter(l => l.assignment.lecture_id === lectureId)
     setAssignments(foundAssignments)
-    // setView(currentView => !currentView)
   }
+  
   // load all student's assignments
   const handleStudentAssignments = () => {
     let a = user.assignments
@@ -30,7 +30,7 @@ const UserCard = ( ) => {
       return null
     }
   }
-  // console.log(user)
+  
   if (!user) return <Wrapper><LoginForm /></Wrapper>;
 
   return (

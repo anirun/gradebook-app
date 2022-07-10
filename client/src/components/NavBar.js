@@ -3,17 +3,6 @@ import { UserContext } from "../context/user";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const style = {
-  width: "60%",
-  margin: "5% 0 1%",
-  padding: "1em",
-  textDecoration: "none",
-  color: "black",
-  backgroundColor: "rgb(2555, 120, 44)",
-  fontWeight: "bold",
-  verticalAlign: "center"
-}
-
 const NavBar = () => {
   const {user} = useContext(UserContext)
 
@@ -32,12 +21,16 @@ const NavBar = () => {
     {user ? (
                 <>
                     &nbsp; &nbsp;
-                    <NavLink to="/newassignment">
-                      <button class="button is-rounded">New Assignment</button>
-                    </NavLink>
-                    &nbsp; &nbsp;
                     <NavLink to="/profile">
                       <button class="button is-rounded">Profile</button>
+                    </NavLink>
+                    &nbsp; &nbsp;
+                    <NavLink to="/appointments">
+                      <button class="button is-rounded">Appointments</button>
+                    </NavLink>
+                    &nbsp; &nbsp;
+                    <NavLink to="/newassignment">
+                      <button class="button is-rounded">New Assignment</button>
                     </NavLink>
                     &nbsp; &nbsp;
                     <NavLink to="/signout">
