@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Router>
-        <Notification />
+        {/* <Notification /> */}
         <NavBar />
         <main>
           <Switch>

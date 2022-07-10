@@ -17,7 +17,7 @@ const Notification = () => {
 
     return (
         <div>
-            {!vanishMode ? <p style={{fontSize: "bold", backgroundColor: message?.color}}>{message?.message}</p> : null}
+            {!vanishMode ? <div class="notification is-danger">{message?.message}</div> : null}
         </div>
     )
 }

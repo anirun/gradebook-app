@@ -26,66 +26,34 @@ const NavBar = () => {
         </Logo>
       </Wrapper>
       <Wrapper>
-        <NavLink
-            activeStyle={{
-                fontWeight: "bolder",
-                color: "red"
-            }}
-                exact
-                style={style}
-                to="/"
-            >Home</NavLink>
-    
+        <NavLink to="/">
+          <button class="button is-rounded">Home</button>
+        </NavLink>
     {user ? (
                 <>
-                    <NavLink
-                    activeStyle={{
-                        fontWeight: "bolder",
-                        color: "red"
-                    }}
-                        exact
-                        style={style}
-                        to="/newassignment"
-                    >New Assignment</NavLink>
-                    <NavLink
-                    activeStyle={{
-                        fontWeight: "bolder",
-                        color: "red"
-                    }}
-                        exact
-                        style={style}
-                        to="/profile"
-                    >Profile</NavLink>
-                    <NavLink
-                    activeStyle={{
-                        fontWeight: "bolder",
-                        color: "red"
-                    }}
-                        exact
-                        style={style}
-                        to="/signout"
-                    >Sign Out</NavLink>
+                    &nbsp; &nbsp;
+                    <NavLink to="/newassignment">
+                      <button class="button is-rounded">New Assignment</button>
+                    </NavLink>
+                    &nbsp; &nbsp;
+                    <NavLink to="/profile">
+                      <button class="button is-rounded">Profile</button>
+                    </NavLink>
+                    &nbsp; &nbsp;
+                    <NavLink to="/signout">
+                    <button class="button is-rounded">Sign Out</button>
+                    </NavLink>
                 </>
                 ) : (
                     <>
-                        <NavLink
-                        activeStyle={{
-                            fontWeight: "bolder",
-                            color: "red"
-                        }}
-                            exact
-                            style={style}
-                            to="/signin"
-                        >Sign In</NavLink>
-                        <NavLink
-                        activeStyle={{
-                            fontWeight: "bolder",
-                            color: "red"
-                        }}
-                            exact
-                            style={style}
-                            to="/signup"
-                        >Sign Up</NavLink>
+                        &nbsp; &nbsp;
+                        <NavLink to="/signin">
+                          <button class="button is-rounded">Sign In</button>
+                        </NavLink>
+                        &nbsp; &nbsp;
+                        <NavLink to="/signup">
+                          <button class="button is-rounded">Sign Up</button>
+                        </NavLink>
                     </>
                 )}
         

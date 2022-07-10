@@ -26,12 +26,12 @@ function LoginForm( ) {
       if (r.ok) {
         r.json().then((r) => setUser(r));
       } else {
-        r.json().then((err) => setMessage(err.errors));
+        r.json().then((err) => {
+          setMessage({message: err.errors, color: "red"})
+          });
       }
     });
   }
-
-  console.log(message)
 
   const handleGoogle = (response) => {
     const requestOptions = {
@@ -62,7 +62,7 @@ function LoginForm( ) {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form class="box">
       <FormField>
         <Label htmlFor="username">Username</Label>
         <input class="input is-rounded"
@@ -84,19 +84,25 @@ function LoginForm( ) {
         />
       </FormField>
       <FormField>
-        <button class="button" variant="fill" color="primary" type="submit">
+        <button class="button is-rounded" variant="fill" color="primary" onClick={handleSubmit}>
           {isLoading ? "Loading..." : "Login"}
         </button>
+        &nbsp; &nbsp;
+        <GoogleLogin 
+          height="10" 
+          width="500px" 
+          backgroundColor="#4285f4" 
+          clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" 
+          access="offline" 
+          scope="email profile" 
+          onClick={handleGoogle} />
       </FormField>
-      
+      <FormField>
+      </FormField>      
       <FormField>
         {message ? <Notification>{message}</Notification> : null }
       </FormField>
     </form>
-
-<FormField>
-<GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" access="offline" scope="email profile" onSubmit={handleGoogle} />
-</FormField>
 </>
   );
 }
