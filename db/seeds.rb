@@ -6,6 +6,8 @@ Assignment.destroy_all
 Assignment.reset_pk_sequence
 Lecture.destroy_all
 Lecture.reset_pk_sequence
+Appointment.destroy_all
+Appointment.reset_pk_sequence
 
 puts '🌱 🌱 🌱'
 
@@ -34,5 +36,8 @@ u3 = User.create!(
 
 a1 = Assignment.create!(name: "homework", student: u2, teacher: u1, graded_points: 75, comments: "Okay.", lecture: l2)
 a2 = Assignment.create!(name: "homework", student: u3, teacher: u1, graded_points: 85, comments: "Good.", lecture: l1)
+
+ap1 = Appointment.create!(date: "17/9/2022", time: "17:00", student: u2, teacher: u1)
+ap2 = Appointment.create!(date: "18/9/2022", time: "17:00", student: u3, teacher: u1)
 
 puts '🪴🪴🪴🪴🪴'

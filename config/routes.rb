@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :appointments
   namespace :api do
     resources :assignments
     resources :lectures
