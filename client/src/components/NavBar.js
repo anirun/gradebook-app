@@ -29,6 +29,10 @@ const NavBar = () => {
                       <button class="button is-rounded">Appointments</button>
                     </NavLink>
                     &nbsp; &nbsp;
+                    <NavLink to="/newappointment">
+                      <button class="button is-rounded">New Appointment</button>
+                    </NavLink>
+                    &nbsp; &nbsp;
                     <NavLink to="/newassignment">
                       <button class="button is-rounded">New Assignment</button>
                     </NavLink>

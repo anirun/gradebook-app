@@ -7,6 +7,7 @@ import UserCard from "./UserCard";
 import NewAssignment from "../pages/NewAssignment";
 import AssignmentCard from "../pages/AssignmentCard";
 import UserAppointments from "../pages/UserAppointments";
+import NewAppointmentForm from "../pages/NewAppointmentForm";
 import { UserContext } from "../context/user";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
           <Switch>
             <Route path="/profile">
               <UserCard />
+            </Route>
+            <Route path="/newappointment">
+              <NewAppointmentForm />
             </Route>
             <Route path="/appointments">
               <UserAppointments />

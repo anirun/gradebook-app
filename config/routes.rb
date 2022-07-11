@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :appointments
+  
   namespace :api do
     resources :assignments
     resources :lectures
-
+    resources :appointments
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
     post "/login", to: "sessions#create"
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :users do
       resources :assignments, shallow: true
       resources :lectures, shallow: true
+      resources :appointments, shallow: true
     end
 
     resources :lectures do

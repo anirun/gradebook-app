@@ -98,8 +98,6 @@ function LoginForm( ) {
           onClick={handleGoogle} />
       </FormField>
       <FormField>
-      </FormField>      
-      <FormField>
         {message ? <Notification>{message}</Notification> : null }
       </FormField>
     </form>
