@@ -1,10 +1,12 @@
+import Wrapper from "../styles/Wrapper"
+
 const Home = () => {
     return (
-      <div>  
-        <div>
+      <Wrapper>  
+        <div class="box">
             <p>You made it home.</p>
         </div>
-      </div>
+      </Wrapper>
     )
   }
   

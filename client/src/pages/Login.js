@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Wrapper from "../styles/Wrapper";
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
@@ -8,7 +9,6 @@ function Login( ) {
 
   return (
     <Wrapper>
-      <Logo>GradeBook✔️</Logo>
       {showLogin ? (
         <>
           <LoginForm />
@@ -35,19 +35,6 @@ function Login( ) {
     </Wrapper>
   );
 }
-
-const Logo = styled.h1`
-  font-family: "Codystar";
-  font-size: 3rem;
-  color: darkblue;
-  margin: 8px 0 16px;
-`;
-
-const Wrapper = styled.section`
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 16px;
-`;
 
 const Divider = styled.hr`
   border: none;

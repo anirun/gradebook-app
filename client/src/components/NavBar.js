@@ -44,7 +44,7 @@ const NavBar = () => {
                 ) : (
                     <>
                         &nbsp; &nbsp;
-                        <NavLink to="/signin">
+                        <NavLink to="/login">
                           <button class="button is-rounded">Sign In</button>
                         </NavLink>
                         &nbsp; &nbsp;

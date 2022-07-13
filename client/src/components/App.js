@@ -2,12 +2,14 @@ import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Signout from "./Signout";
+import Login from "../pages/Login";
 import SignUpForm from "./SignUpForm.js";
 import UserCard from "./UserCard";
 import NewAssignment from "../pages/NewAssignment";
 import AssignmentCard from "../pages/AssignmentCard";
 import UserAppointments from "../pages/UserAppointments";
 import NewAppointmentForm from "../pages/NewAppointmentForm";
+import Home from "../pages/Home";
 import { UserContext } from "../context/user";
 
 function App() {
@@ -44,8 +46,11 @@ function App() {
             <Route path="/signout">
               <Signout />
             </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
             <Route path="/">
-              <UserCard />
+              <Home />
             </Route>
           </Switch>
         </main>

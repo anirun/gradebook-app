@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { FormField, Label } from "../styles";
 import Notification from "./Notification";
 import { UserContext } from "../context/user";
@@ -6,8 +7,9 @@ import { MessageContext } from "../context/message";
 import { GoogleLogin } from "react-google-login";
 
 function LoginForm( ) {
-  const { setUser } = useContext(UserContext)
-  const { message, setMessage } = useContext(MessageContext)
+  const history = useHistory();
+  const { setUser } = useContext(UserContext);
+  const { message, setMessage } = useContext(MessageContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +26,10 @@ function LoginForm( ) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((r) => setUser(r));
+        r.json().then((r) => {
+          setUser(r)
+          history.push("/profile")
+        });
       } else {
         r.json().then((err) => {
           setMessage({message: err.errors, color: "red"})

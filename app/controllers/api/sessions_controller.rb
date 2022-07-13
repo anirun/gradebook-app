@@ -13,7 +13,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
-    head :no_content
+    render status: 201
   end
 
   def omniauth
