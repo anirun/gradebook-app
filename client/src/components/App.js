@@ -9,6 +9,8 @@ import NewAssignment from "../pages/NewAssignment";
 import AssignmentCard from "../pages/AssignmentCard";
 import UserAppointments from "../pages/UserAppointments";
 import NewAppointmentForm from "../pages/NewAppointmentForm";
+import EditAppointmentForm from "../pages/EditAppointmentForm";
+import AppointmentCard from "./AppointmentCard";
 import Home from "../pages/Home";
 import { UserContext } from "../context/user";
 
@@ -30,6 +32,12 @@ function App() {
             </Route>
             <Route path="/newappointment">
               <NewAppointmentForm />
+            </Route>
+            <Route path="/editappointment">
+              <EditAppointmentForm />
+            </Route>
+            <Route path="/appointments/:id">
+              <AppointmentCard />
             </Route>
             <Route path="/appointments">
               <UserAppointments />

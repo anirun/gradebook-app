@@ -1,19 +1,50 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { MessageContext } from "../context/message";
+import Wrapper from "../styles/Wrapper";
 
 function AppointmentCard({appointment}) {
-  console.log(appointment)
+  let history = useHistory();
+  let location = useLocation();
+  const { setMessage } = useContext(MessageContext);
+
+  const handleClick = (e) => {
+    if (e.target.value === "edit") {
+      history.push({
+        pathname: "/editappointment",
+        state: { detail: appointment }})
+    } else if (e.target.value === "delete") {
+      fetch(`/api/appointments/${appointment.appointment.id}`, {
+        method: "DELETE"
+      }).then((r) => r.ok ? setMessage("Appointment Cancelled") : setMessage("Cancel Unsuccessful"))
+    }
+  }
+
     return (
-    <div class="block">
-        <div class="box">
-            <div class="block">
-                Date: {appointment.appointment.date} &nbsp; &nbsp; Time: {appointment.appointment.time}
-            </div>
-            <div class="block">
-                Student: {appointment.student.name}
-            </div>
-        </div>
-    </div>
+    <Wrapper>
+      <div class="block">
+          <div class="box">
+              <div class="block">
+                  Date: {appointment.appointment.date || appointment.date} &nbsp; &nbsp; Time: {appointment.appointment.time || appointment.time}
+              </div>
+              <div class="block">
+                  Student: {appointment.student.name}
+              </div>
+              <div class="block">
+                <button class="button is-rounded" 
+                  value="edit"
+                  onClick={handleClick}
+                  >Edit Appointment</button>
+                &nbsp; &nbsp;
+                <button class="button is-rounded" 
+                  value="delete"
+                  onClick={handleClick}
+                  >Cancel Appointment</button>
+              </div>
+          </div>
+      </div>
+    </Wrapper>
   )
 }
 
-export default AppointmentCard
+export default AppointmentCard;

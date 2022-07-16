@@ -31,6 +31,7 @@ class Api::AppointmentsController < ApplicationController
   # DELETE /appointments/1
   def destroy
     @appointment.destroy
+    render status: :ok
   end
 
   private
@@ -41,6 +42,6 @@ class Api::AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.require(:appointment).permit(:date, :time, :confirmed, :student_id, :teacher_id)
+      params.permit(:date, :time, :confirmed, :student_id, :teacher_id)
     end
 end

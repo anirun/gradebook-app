@@ -3,10 +3,12 @@ import { useHistory } from "react-router-dom";
 import { FormField } from "../styles";
 import styled from "styled-components";
 import { UserContext } from '../context/user';
-
+import { MessageContext } from '../context/message';
+import Wrapper from '../styles/Wrapper';
 function NewAppointmentForm() {
 const history = useHistory();
 const { user } = useContext(UserContext)
+const { setMessage } = useContext(MessageContext)
 const [date, setDate] = useState("")
 const [time, setTime] = useState("")
 const [teacherId, setTeacherId] = useState()
@@ -15,6 +17,7 @@ const [teachers, setTeachers] = useState([])
 const [students, setStudents] = useState([])
 
 useEffect(() => (
+    
     fetch(`/api/teachers`, {
         method: "GET",
         headers: {
@@ -56,7 +59,7 @@ function handleSubmit(e) {
         if (r.ok) {
             history.push("/appointments")
         } else {
-            console.log(r)
+            setMessage(r)
         }
     })
 }
@@ -80,7 +83,7 @@ return (
             { (user?.role === "teacher") ? 
                 <FormField>
                 <div class="select is-rounded">
-                    <select id="student-id" onChange={(e) => setStudentId(e.target.value)}>
+                    <select id="student-id" onChange={(e) => setStudentId(parseInt(e.target.value))}>
                         <option> ---Choose student--- </option>
                         {students.map((s) => (
                             <option value={s.id}>{s.name}</option>
@@ -89,7 +92,7 @@ return (
                 </div>
             </FormField>  : <FormField>
                 <div class="select is-rounded">
-                    <select id="teacher-id" onChange={(e) => setTeacherId(e.target.value)}>
+                    <select id="teacher-id" onChange={(e) => setTeacherId(parseInt(e.target.value))}>
                         <option> ---Choose teacher--- </option>
                         {teachers.map((s) => (
                             <option value={s.id}>{s.name}</option>
@@ -104,12 +107,5 @@ return (
     </Wrapper>
   )
 }
-
-const Wrapper = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-`;
 
 export default NewAppointmentForm
