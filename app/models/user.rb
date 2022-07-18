@@ -23,6 +23,7 @@ class User < ApplicationRecord
         u.email = auth.fetch(:email)
         u.password = SecureRandom.hex(20)
         u.username = auth.fetch(:username).downcase.gsub(" ", "_")
+        u.role = 1
     end
 end
 

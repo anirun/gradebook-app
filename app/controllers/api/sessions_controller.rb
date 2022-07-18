@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :omniauth]
 
   def create
     user = User.find_by(username: params[:username])
@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :user_id
+    session.delete(:user_id)
     render status: 201
   end
 
@@ -23,7 +23,7 @@ class Api::SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: UserSerializer.new(user), status: :created
     else
-      render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
+      render json: {error: "Unsuccessful"}, status: :unauthorized
     end
   end
 

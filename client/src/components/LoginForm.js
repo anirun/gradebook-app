@@ -42,9 +42,7 @@ function LoginForm( ) {
     const requestOptions = {
         method: 'POST',
         headers: {
-            // 'Authorization': `Bearer ${response.Zi.accessToken}`,
             'Content-Type': 'application/json',
-            // 'access_token': `${response.Zi.accessToken}`
         },
         body: JSON.stringify(response)
     }
@@ -52,13 +50,15 @@ function LoginForm( ) {
     .then(res => {
       if (res.ok) {
         res.json().then(data => {
-          setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
-          setMessage({message: "User successfully logged in", color: "green"})
+          console.log(data)
+          // setUser(data)
+          // setMessage({message: "User successfully logged in", color: "green"})
         })
       }
       else {
         res.json().then(data => {
-          setMessage({message: data.error, color: "red"})
+          console.log(data)
+          // setMessage({message: data.error, color: "red"})
         })
       }
     })
@@ -100,7 +100,8 @@ function LoginForm( ) {
           clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" 
           access="offline" 
           scope="email profile" 
-          onClick={handleGoogle} />
+          onSuccess={handleGoogle}
+          onFailure={handleGoogle} />
       </FormField>
       <FormField>
         {message ? <Notification>{message}</Notification> : null }

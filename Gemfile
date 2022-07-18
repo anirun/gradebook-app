@@ -13,7 +13,7 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 
 # Media file upload
-gem 'activestorage'
+# gem 'activestorage'
 
 gem "bulma-rails", "~> 0.8.0"
 
@@ -22,6 +22,7 @@ gem 'activerecord-reset-pk-sequence'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
 # google omniauth
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
