@@ -60,30 +60,59 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
   }
 
   return (
-    <tr key={assignment.assignment.id}>
+    <>
+    { (editMode === true) ? (
+      <tr key={assignment.assignment.id}>
+        <td>{assignment.student.name}</td>
+        <td>
+          <input 
+            class="input is-rounded"
+            size="3"
+            type="text"
+            name="gradedPoints"
+            value={assign.name}
+            onChange={(e) => handleChange(e)}
+          />
+        </td>
+        <td>
+          <input 
+            class="input is-rounded"
+            size="3"
+            type="text"
+            name="gradedPoints"
+            value={assign.gradedPoints}
+            onChange={(e) => handleChange(e)}
+            />
+        </td>
+        <td>
+          <input 
+            class="input is-rounded"
+            size="3"
+            type="text"
+            name="totalPoints"
+            value={assign.totalPoints}
+            onChange={(e) => handleChange(e)}
+            />
+        </td>
+        <td>
+          <button 
+            class="is-rounded" 
+            onClick={handleSubmit}>
+              submit
+          </button>
+        </td>
+      </tr>
+      ) : (
+    <>
+      <tr key={assignment.assignment.id}>
       <td>{assignment.student.name}</td>
       <td>{assign.name}
         &nbsp; &nbsp;
         <button class="is-rounded"
-          onClick={handleDelete}>delete</button></td>
-      <td> 
-        { (editMode === true) ? (
-          <>
-            <input 
-              class="input is-rounded"
-              size="3"
-              type="text"
-              name="gradedPoints"
-              value={assign.gradedPoints}
-              onChange={(e) => handleChange(e)}
-              />
-            <button 
-              class="is-rounded" 
-              onClick={handleSubmit}>
-                submit
-              </button>
-          </> ) : (assign.gradedPoints) }
-            &nbsp; &nbsp;
+          onClick={handleDelete}>delete</button>
+      </td>
+      <td>{assign.gradedPoints}
+        &nbsp;&nbsp;&nbsp;&nbsp;
           <button 
             class="is-rounded" 
             onClick={(e) => handleEdit(e)} 
@@ -93,8 +122,12 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
       </td>
       <td>{assign.totalPoints}</td>
       <td>{assign.grade}</td>
-    </tr>
+      </tr>
+    </>
   )
+  }
+</>
+)
 }
 
-export default AssignmentRow
+export default AssignmentRow;
