@@ -31,7 +31,7 @@ function SignUpForm() {
         password,
         password_confirmation: passwordConfirmation,
         image_url: imageUrl,
-        role: role.to_int,
+        role: parseInt(role),
       })
     }).then((r) => {
       setIsLoading(false);
@@ -100,7 +100,7 @@ function SignUpForm() {
             />
           </FormField>
           <FormField>
-            <div class="control" value={role} onChange={(e) => setRole(e.target.value)}>
+            <div class="control" value={role} onChange={(e) => setRole(parseInt(e.target.value))}>
               <label class="radio">
                 <input type="radio" name="answer" value="0"/>
                 Teacher
