@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  before_create :check_avatar
   
   has_many :given_assignments, class_name: "Assignment", foreign_key: :teacher_id, dependent: :destroy
   has_many :graded_assignments, class_name: "Assignment", foreign_key: :student_id, dependent: :destroy
@@ -26,6 +27,14 @@ class User < ApplicationRecord
         u.username = auth.fetch(:username).downcase.gsub(" ", "_")
         u.role = 1
     end
-end
+  end
+
+
+  def check_avatar
+    if self.image_url === ""
+      self.image_url = "https://cdn.landesa.org/wp-content/uploads/default-user-image.png"  
+    end
+  end
+
 
 end
