@@ -6,7 +6,6 @@ import Login from "../pages/Login";
 import SignUpForm from "./SignUpForm.js";
 import UserCard from "./UserCard";
 import NewAssignment from "../pages/NewAssignment";
-import AssignmentCard from "../pages/AssignmentCard";
 import UserAppointments from "../pages/UserAppointments";
 import NewAppointmentForm from "../pages/NewAppointmentForm";
 import EditAppointmentForm from "../pages/EditAppointmentForm";
@@ -41,9 +40,6 @@ function App() {
             </Route>
             <Route path="/appointments">
               <UserAppointments />
-            </Route>
-            <Route path="/assignments/:id">
-              <AssignmentCard />
             </Route>
             <Route path="/newassignment">
               <NewAssignment />

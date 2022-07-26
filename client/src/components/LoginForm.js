@@ -4,7 +4,7 @@ import { FormField, Label } from "../styles";
 import Notification from "./Notification";
 import { UserContext } from "../context/user";
 import { MessageContext } from "../context/message";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 
 function LoginForm( ) {
   const history = useHistory();
@@ -13,7 +13,7 @@ function LoginForm( ) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -38,32 +38,32 @@ function LoginForm( ) {
     });
   }
 
-  const handleGoogle = (response) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(response)
-    }
-    fetch(`/api/auth/google_oauth2/callback`, requestOptions)
-    .then(res => {
-      if (res.ok) {
-        res.json().then(data => {
-          console.log(data)
-          // setUser(data)
-          // setMessage({message: "User successfully logged in", color: "green"})
-        })
-      }
-      else {
-        res.json().then(data => {
-          console.log(data)
-          // setMessage({message: data.error, color: "red"})
-        })
-      }
-    })
-    .catch(err => setMessage({message: err.message, color: "red"}))
-  }
+  // const handleGoogle = (response) => {
+  //   const requestOptions = {
+  //       method: 'POST',
+  //       headers: {
+  //           'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(response)
+  //   }
+  //   fetch(`/api/auth/google_oauth2/callback`, requestOptions)
+  //   .then(res => {
+  //     if (res.ok) {
+  //       res.json().then(data => {
+  //         console.log(data)
+  //         // setUser(data)
+  //         // setMessage({message: "User successfully logged in", color: "green"})
+  //       })
+  //     }
+  //     else {
+  //       res.json().then(data => {
+  //         console.log(data)
+  //         // setMessage({message: data.error, color: "red"})
+  //       })
+  //     }
+  //   })
+  //   .catch(err => setMessage({message: err.message, color: "red"}))
+  // }
 
   return (
     <>
@@ -93,7 +93,7 @@ function LoginForm( ) {
           {isLoading ? "Loading..." : "Login"}
         </button>
         &nbsp; &nbsp;
-        <GoogleLogin 
+        {/* <GoogleLogin 
           height="10" 
           width="500px" 
           backgroundColor="#4285f4" 
@@ -101,7 +101,7 @@ function LoginForm( ) {
           access="offline" 
           scope="email profile" 
           onSuccess={handleGoogle}
-          onFailure={handleGoogle} />
+          onFailure={handleGoogle} /> */}
       </FormField>
       <FormField>
         {message ? <Notification>{message}</Notification> : null }

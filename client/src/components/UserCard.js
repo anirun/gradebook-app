@@ -59,7 +59,7 @@ const UserCard = ( ) => {
           </div>
           
           <div class="content">
-            { (view === true) ? <AssignmentTable assignments={assignments} /> : "Check out your assignments for the lectures above..." }
+            { (view === true) ? <AssignmentTable assignments={assignments} setAssignments={setAssignments} /> : "Check out your assignments for the lectures above..." }
           </div>
         
         </div>

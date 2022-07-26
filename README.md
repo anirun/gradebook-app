@@ -25,7 +25,3 @@ As a user, I can:
   - rspec test suite
 * useContext
 * deploy and host project with Heroku
-
-## Endpoints
-
-The base URL for my backend is: `http://localhost:3000`

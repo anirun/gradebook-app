@@ -1,12 +1,16 @@
 import React from 'react'
 import AssignmentRow from '../components/AssignmentRow';
 
-const AssignmentTable = ({assignments}) => {
+const AssignmentTable = ({assignments, setAssignments}) => {
 
   
     
     const renderAssignments = assignments.map( (assignment) => (
-      <AssignmentRow key={assignment.assignment.id} assignment={assignment} />
+      <AssignmentRow 
+        key={assignment.assignment.id} 
+        assignment={assignment} 
+        assignments={assignments} 
+        setAssignments={setAssignments} />
     ) )
   
  return (

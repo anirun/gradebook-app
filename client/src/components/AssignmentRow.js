@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 
-const AssignmentRow = ({assignment}) => {
+const AssignmentRow = ({assignments, setAssignments, assignment}) => {
   const history = useHistory()
   const [editMode, setEditMode] = useState(false)
 
@@ -52,7 +52,11 @@ const AssignmentRow = ({assignment}) => {
     fetch(`/api/assignments/${assignment.assignment.id}`, {
       method: 'DELETE'
     })
-    .then(history.push('/newassignment'))
+    .then(() => {
+      let newAssignments = [...assignments]
+      newAssignments.splice(assignment.assignment.id, 1)
+      setAssignments(newAssignments)
+    })
   }
 
   return (
@@ -76,7 +80,7 @@ const AssignmentRow = ({assignment}) => {
             <button 
               class="is-rounded" 
               onClick={handleSubmit}>
-                Submit
+                submit
               </button>
           </> ) : (assign.gradedPoints) }
             &nbsp; &nbsp;
