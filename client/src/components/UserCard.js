@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom';
 import AssignmentTable from '../pages/AssignmentTable'
 import "../styles.css"
 import styled from "styled-components";
@@ -6,6 +7,7 @@ import { UserContext } from '../context/user';
 import LoginForm from './LoginForm';
 
 const UserCard = ( ) => {
+  const history = useHistory()
   const { user } = useContext(UserContext);
 
   let [view, setView] = useState(false)
@@ -19,6 +21,10 @@ const UserCard = ( ) => {
     setLectureId(id)
     let foundAssignments = user.assignments.filter(l => l.assignment.lecture_id === lectureId)
     setAssignments(foundAssignments)
+  }
+
+  const handleNewAssignment = () => {
+    history.push('/newassignment')
   }
   
   // load all student's assignments
@@ -45,9 +51,10 @@ const UserCard = ( ) => {
         
           <div class="content">
             
-            { (user.role === "student") ? <button class="button" onClick={handleStudentAssignments}>View Assignments</button> : null }
-
-            { user.lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleLectureAssignments(e)} >{l.name}</button>))}
+            { (user?.role === "student") ? <button class="button" onClick={handleStudentAssignments}>View Assignments</button> : null }
+            { (user?.role === "teacher") ? <button class="button" onClick={handleNewAssignment}>New Assignment</button> : null }
+            &nbsp;&nbsp;&nbsp;
+            { user?.lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleLectureAssignments(e)} >{l.name}</button>))}
           
           </div>
           

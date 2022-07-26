@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const NavBar = () => {
   const {user} = useContext(UserContext)
-
+  console.log(user)
   return (
     
     <div class="container">
@@ -29,14 +29,6 @@ const NavBar = () => {
                       <button class="button is-rounded">Appointments</button>
                     </NavLink>
                     &nbsp; &nbsp;
-                    <NavLink to="/newappointment">
-                      <button class="button is-rounded">New Appointment</button>
-                    </NavLink>
-                    &nbsp; &nbsp;
-                    <NavLink to="/newassignment">
-                      <button class="button is-rounded">New Assignment</button>
-                    </NavLink>
-                    &nbsp; &nbsp;
                     <NavLink to="/signout">
                     <button class="button is-rounded">Sign Out</button>
                     </NavLink>
@@ -53,20 +45,6 @@ const NavBar = () => {
                         </NavLink>
                     </>
                 )}
-        
-        {/* <nav class="navbar" role="navigation" aria-label="main navigation">
-          <button class="button" onClick={handleProfile}>
-            Profile
-          </button>
-          &nbsp;&nbsp;
-          { (user.role === "teacher") ? <button class="button" onClick={handleNew}>
-            New Assignment
-          </button> : null }
-          &nbsp;&nbsp;
-          <button class="button" variant="outline" onClick={handleLogoutClick}>
-            Logout
-          </button>
-        </nav> */}
       </Wrapper>
     </div>
   );
