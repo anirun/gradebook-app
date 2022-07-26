@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from 'react-router-dom'
 import { Error, FormField, Label } from "../styles";
 import Wrapper from "../styles/Wrapper";
+import { UserContext } from "../context/user"
 
-function SignUpForm({ onLogin }) {
+function SignUpForm() {
+  const { setUser } = useContext(UserContext)
+  const history = useHistory()
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +36,10 @@ function SignUpForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          setUser(user)
+          history.push('/profile')
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
