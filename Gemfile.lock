@@ -92,8 +92,6 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jsonapi-renderer (0.2.2)
-    jsonapi-serializer (2.2.0)
-      activesupport (>= 4.2)
     jwt (2.4.1)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -180,6 +178,10 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -226,12 +228,10 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.12)
   activerecord-reset-pk-sequence
-  activestorage
   bcrypt (~> 3.1.7)
   bulma-rails (~> 0.8.0)
   byebug
   dotenv-rails
-  jsonapi-serializer
   listen (~> 3.3)
   omniauth
   omniauth-google-oauth2
@@ -240,6 +240,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.3, >= 6.1.3.2)
+  rspec
   rspec-json_expectations
   rspec-rails (~> 5.0.0)
   shoulda-matchers (~> 4.0)

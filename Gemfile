@@ -12,9 +12,13 @@ gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# rspec for test suite
+gem 'rspec'
+
 # Media file upload
 # gem 'activestorage'
 
+# styling with bulma
 gem "bulma-rails", "~> 0.8.0"
 
 # reset-pk-sequence when reseeding
@@ -31,8 +35,11 @@ gem 'omniauth-rails_csrf_protection'
 # hide env file for oauth
 gem 'dotenv-rails'
 
+
+gem "active_model_serializers", "~> 0.10.12"
+
 # JSONAPI::Serializer
-gem 'jsonapi-serializer'
+# gem 'jsonapi-serializer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,4 +62,3 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
 end
 
-gem "active_model_serializers", "~> 0.10.12"

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { MessageContext } from "../context/message";
 import Wrapper from "../styles/Wrapper";
 
 function AppointmentCard({appointment}) {
   let history = useHistory();
-  let location = useLocation();
+
   const { setMessage } = useContext(MessageContext);
 
   const handleClick = (e) => {
