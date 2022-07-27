@@ -3,13 +3,14 @@ import AssignmentRow from '../components/AssignmentRow';
 
 const AssignmentTable = ({assignments, setAssignments}) => {
 
-  
+  console.log('assignments passed from UserCard', assignments)
     
     const renderAssignments = assignments.map( (assignment) => (
       <AssignmentRow 
-        key={assignment.assignment.id} 
+        key={assignment.id} 
         assignment={assignment} 
-        assignments={assignments} 
+        assignments={assignments}
+        student={assignment.student}
         setAssignments={setAssignments} />
     ) )
   

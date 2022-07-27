@@ -4,7 +4,6 @@ import { FormField, Label } from "../styles";
 import Notification from "./Notification";
 import { UserContext } from "../context/user";
 import { MessageContext } from "../context/message";
-// import { GoogleLogin } from "react-google-login";
 
 function LoginForm( ) {
   const history = useHistory();
@@ -38,33 +37,6 @@ function LoginForm( ) {
     });
   }
 
-  // const handleGoogle = (response) => {
-  //   const requestOptions = {
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(response)
-  //   }
-  //   fetch(`/api/auth/google_oauth2/callback`, requestOptions)
-  //   .then(res => {
-  //     if (res.ok) {
-  //       res.json().then(data => {
-  //         console.log(data)
-  //         // setUser(data)
-  //         // setMessage({message: "User successfully logged in", color: "green"})
-  //       })
-  //     }
-  //     else {
-  //       res.json().then(data => {
-  //         console.log(data)
-  //         // setMessage({message: data.error, color: "red"})
-  //       })
-  //     }
-  //   })
-  //   .catch(err => setMessage({message: err.message, color: "red"}))
-  // }
-
   return (
     <>
     <form class="box">
@@ -92,16 +64,6 @@ function LoginForm( ) {
         <button class="button is-rounded" variant="fill" color="primary" onClick={handleSubmit}>
           {isLoading ? "Loading..." : "Login"}
         </button>
-        &nbsp; &nbsp;
-        {/* <GoogleLogin 
-          height="10" 
-          width="500px" 
-          backgroundColor="#4285f4" 
-          clientId="102908233667-hl1lgqh6n1vij1lkdjpttbf6hp0qbvba.apps.googleusercontent.com" 
-          access="offline" 
-          scope="email profile" 
-          onSuccess={handleGoogle}
-          onFailure={handleGoogle} /> */}
       </FormField>
       <FormField>
         {message ? <Notification>{message}</Notification> : null }
@@ -110,8 +72,6 @@ function LoginForm( ) {
 </>
   );
 }
-
-
 
 
 export default LoginForm;

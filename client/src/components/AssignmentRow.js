@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 
-const AssignmentRow = ({assignments, setAssignments, assignment}) => {
+const AssignmentRow = ({assignments, setAssignments, assignment, student}) => {
   const history = useHistory()
   const [editMode, setEditMode] = useState(false)
 
+  console.log('assignment passed from AssignmentTable', assignment)
+
   const [assign, setAssign] = useState({
-    name: assignment.assignment.name,
-    totalPoints: assignment.assignment.total_points,
-    gradedPoints: assignment.assignment.graded_points,
-    lectureId: assignment.assignment.lecture_id,
-    studentId: assignment.student.id,
-    grade: assignment.assignment.grade
+    name: assignment.name,
+    totalPoints: assignment.total_points,
+    gradedPoints: assignment.graded_points,
+    lectureId: assignment.lecture_id,
+    studentId: assignment.student_id,
+    grade: assignment.grade
   });
 
   const handleEdit = () => {
@@ -27,7 +29,7 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
   }
 
   const handleSubmit = () => {
-    fetch(`/api/assignments/${assignment.assignment.id}`, {
+    fetch(`/api/assignments/${assignment.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         name: assign.name, 
@@ -49,12 +51,12 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
   }
 
   const handleDelete = () => {
-    fetch(`/api/assignments/${assignment.assignment.id}`, {
+    fetch(`/api/assignments/${assignment.id}`, {
       method: 'DELETE'
     })
     .then(() => {
       let newAssignments = [...assignments]
-      newAssignments.splice(assignment.assignment.id, 1)
+      newAssignments.splice(assignment.id, 1)
       setAssignments(newAssignments)
     })
   }
@@ -62,8 +64,8 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
   return (
     <>
     { (editMode === true) ? (
-      <tr key={assignment.assignment.id}>
-        <td>{assignment.student.name}</td>
+      <tr key={assignment.id}>
+        <td>{student.name}</td>
         <td>
           <input 
             class="input is-rounded"
@@ -104,8 +106,8 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
       </tr>
       ) : (
     <>
-      <tr key={assignment.assignment.id}>
-      <td>{assignment.student.name}</td>
+      <tr key={assignment.id}>
+      <td>{student.name}</td>
       <td>{assign.name}
         &nbsp; &nbsp;
         <button class="is-rounded"
@@ -116,7 +118,7 @@ const AssignmentRow = ({assignments, setAssignments, assignment}) => {
           <button 
             class="is-rounded" 
             onClick={(e) => handleEdit(e)} 
-            value={assignment.assignment.graded_points}>
+            value={assignment.graded_points}>
               edit
           </button>
       </td>

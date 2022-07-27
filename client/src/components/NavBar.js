@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const NavBar = () => {
   const {user} = useContext(UserContext)
-  console.log(user)
+  console.log('user fetched by NavBar', user)
   return (
     
     <div class="container">

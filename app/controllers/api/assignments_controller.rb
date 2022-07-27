@@ -26,7 +26,7 @@ class Api::AssignmentsController < ApplicationController
     end
 
     def show
-        render json: @assignment, include: [:user, :lecture]
+        render json: @assignment, include: [:teacher, :student, :lecture]
     end
 
     def update
@@ -41,7 +41,7 @@ class Api::AssignmentsController < ApplicationController
     private
 
     def assignment_params
-        params.permit(:name, :total_points, :graded_points, :student_id, :teacher_id, :comments, :lecture_id)
+        params.permit(:name, :total_points, :graded_points, :student_id, :teacher_id, :comments, :lecture_id, :teacher, :student)
     end
 
     def set_assignment

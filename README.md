@@ -1,4 +1,10 @@
-# Gradebook App
+# Gradebook
+
+GRADEBOOK is an app to track and check grades.
+
+It's for students and teachers.
+
+It uses a Ruby/Active Record API and React frontend that is deployed here: https://secure-depths-90828.herokuapp.com/
 
 ## Core Deliverables
 
@@ -7,6 +13,10 @@ As a user, I can:
 2. ...access assignments that I have given as a teacher, or received as a student.
 3. ...read, write and edit grades for each lecture of students (as a teacher).
 4. ...create, read, update and delete appointments.
+
+
+
+This project was built for Flatiron School's Phase 5 Project.
 
 ## Project Requirements
 * a many-to-many relationship

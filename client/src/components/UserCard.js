@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react'
+// import { useHistory } from 'react-router-dom';
 import AssignmentTable from '../pages/AssignmentTable'
 import "../styles.css"
 import styled from "styled-components";
@@ -7,35 +7,14 @@ import { UserContext } from '../context/user';
 import LoginForm from './LoginForm';
 
 const UserCard = ( ) => {
-  const history = useHistory()
   const { user } = useContext(UserContext);
-
-  let [view, setView] = useState(false)
+  let userAssignments = user?.given_assignments
   let [lectureId, setLectureId] = useState()
-  let [assignments, setAssignments] = useState([])
+  let [assignments, setAssignments] = useState(userAssignments)
+  // given_assignments includes STUDENT and LECTURE objects for assignment
 
-  // load assignments specific to lecture
-  const handleLectureAssignments = (e) => {
-    setView(currentView => !currentView)
-    let id = parseInt(e.target.value)
-    setLectureId(id)
-    let foundAssignments = user.assignments.filter(l => l.assignment.lecture_id === lectureId)
-    setAssignments(foundAssignments)
-  }
-
-  const handleNewAssignment = () => {
-    history.push('/newassignment')
-  }
   
-  // load all student's assignments
-  const handleStudentAssignments = () => {
-    let a = user.assignments
-    if (user.role === "student") {
-      setAssignments(a)
-    } else {
-      return null
-    }
-  }
+
   
   if (!user) return <Wrapper><LoginForm /></Wrapper>;
 
@@ -51,15 +30,10 @@ const UserCard = ( ) => {
         
           <div class="content">
             
-            { (user?.role === "student") ? <button class="button" onClick={handleStudentAssignments}>View Assignments</button> : null }
-            { (user?.role === "teacher") ? <button class="button" onClick={handleNewAssignment}>New Assignment</button> : null }
-            &nbsp;&nbsp;&nbsp;
-            { user?.lectures.map((l) => (<button class="button" value={l.id} onClick={(e) => handleLectureAssignments(e)} >{l.name}</button>))}
-          
           </div>
           
           <div class="content">
-            { (view === true) ? <AssignmentTable assignments={assignments} setAssignments={setAssignments} /> : "Check out your assignments for the lectures above..." }
+            <AssignmentTable assignments={assignments} />
           </div>
         
         </div>
