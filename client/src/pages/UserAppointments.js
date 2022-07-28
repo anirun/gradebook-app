@@ -11,7 +11,7 @@ function UserAppointments() {
     const [aptList, setAptList] = useState(user?.appointments)
 
     const handleNewAppointment = () => {
-      history.push('/newappointment')
+      history.push('/appointments/new')
     }
     
     useEffect(() => {

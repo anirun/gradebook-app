@@ -57,7 +57,7 @@ function handleSubmit(e) {
         })
     }).then((r) => {
         if (r.ok) {
-            history.push("/appointments")
+            history.push("/user/appointments")
         } else {
             setMessage(r)
         }

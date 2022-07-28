@@ -11,7 +11,7 @@ function AppointmentCard({appointment}) {
   const handleClick = (e) => {
     if (e.target.value === "edit") {
       history.push({
-        pathname: "/editappointment",
+        pathname: "/appointments/edit",
         state: { detail: appointment }})
     } else if (e.target.value === "delete") {
       fetch(`/api/appointments/${appointment.appointment.id}`, {

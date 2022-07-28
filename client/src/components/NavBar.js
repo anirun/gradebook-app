@@ -25,7 +25,7 @@ const NavBar = () => {
                       <button class="button is-rounded">Profile</button>
                     </NavLink>
                     &nbsp; &nbsp;
-                    <NavLink to="/appointments">
+                    <NavLink to="/user/appointments">
                       <button class="button is-rounded">Appointments</button>
                     </NavLink>
                     &nbsp; &nbsp;

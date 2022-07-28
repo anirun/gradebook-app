@@ -29,19 +29,19 @@ function App() {
             <Route path="/profile">
               <UserCard />
             </Route>
-            <Route path="/newappointment">
+            <Route path="/appointments/new">
               <NewAppointmentForm />
             </Route>
-            <Route path="/editappointment">
+            <Route path="/appointments/edit">
               <EditAppointmentForm />
             </Route>
             <Route path="/appointments/:id">
               <AppointmentCard />
             </Route>
-            <Route path="/appointments">
+            <Route path="/user/appointments">
               <UserAppointments />
             </Route>
-            <Route path="/newassignment">
+            <Route path="/assignments/new">
               <NewAssignment />
             </Route>
             <Route path="/signup">
